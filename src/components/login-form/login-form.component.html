@@ -1,0 +1,27 @@
+<form #loginForm="ngForm" novalidate >
+<ion-card>
+  <ion-card-content>
+    <ion-item>
+
+      <ion-label floating>Email Address</ion-label>
+      <ion-input pattern="[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]*\.([a-z]{2,4})" name="email" #email="ngModel" required   [(ngModel)]="account.email" type="email"></ion-input>
+    </ion-item>
+    <div padding *ngIf="email.invalid && email.dirty">
+    <span class="global__input-error">Email Adress Not Vaild</span>
+    </div>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input required pattern="(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,}$" name="password" #password="ngModel"  [(ngModel)]="account.password" type="password"></ion-input>
+    </ion-item>
+<div padding *ngIf="password.invalid && password.dirty">
+  <span class="global__input-error">Password Must Contain One Upper Case Letter And Min Of 6 Char</span>
+</div>
+  </ion-card-content>
+  <ion-row class="login_form__buttons">
+    <div>
+      <button   (click)="navigateToRegisterPage()" color="secondary" ion-button>Register</button>
+      <button [disabled]="!loginForm.valid"  (click)="login()" color="primary" ion-button>Login</button>
+    </div>
+  </ion-row>
+</ion-card>
+</form>

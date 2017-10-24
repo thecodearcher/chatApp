@@ -1,0 +1,26 @@
+<!-- Generated template for the ProfileViewComponent component -->
+<div class="profile-view__image-container">
+  <img class="profile-view__image" src="assets/images/profile-placeholder.png" alt="">
+</div>
+<div *ngIf="userProfile">
+<ion-card>
+  <ion-card-content>
+    <ion-item>
+      <ion-label floating>First Name</ion-label>
+      <ion-input [value]="userProfile.firstName" [readonly]="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Last Name</ion-label>
+      <ion-input [value]="userProfile.lastName" [readonly]="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Date Of Birth</ion-label>
+      <ion-input [value]="userProfile.dateOfBirth" [readonly]="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input [value]="userProfile.email" [readonly]="true"></ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+</div>
