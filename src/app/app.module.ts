@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {FIREBASE_CONFIG} from './app.firebase.config';
 import { AuthProvider } from '../providers/auth/auth.service';
 import { DataProvider } from '../providers/data/data.service';
+import { ChatProvider } from '../providers/chat/chat.service';
 @NgModule({
   declarations: [
         MyApp
@@ -34,7 +35,8 @@ import { DataProvider } from '../providers/data/data.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    DataProvider
+    DataProvider,
+    ChatProvider
   ]
 })
 export class AppModule {}

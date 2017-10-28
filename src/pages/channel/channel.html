@@ -6,13 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Channels</ion-title>
-  </ion-navbar>
-
+  
+<ion-buttons end>
+<button ion-button icon-only (click)="showAddChannelDialog()">
+<ion-icon name="add"></ion-icon>  
+</button>
+</ion-buttons>
+</ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
+<ion-list>
+  <ion-item *ngFor="let channel of channelList | async"  (click)="selectChannel(channel)">
+    #{{channel.name}}
+  </ion-item>
+</ion-list>
 </ion-content>

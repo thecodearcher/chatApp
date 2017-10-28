@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Profile } from '../../models/profile/profile.interface';
 /**
  * Generated class for the SearchUserPage page.
  *
@@ -17,8 +18,8 @@ export class SearchUserPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchUserPage');
+  openChat(profile: Profile){
+    this.navCtrl.push('MessagePage',{profile});
   }
 
 }

@@ -1,6 +1,6 @@
 {
   "name": "beep",
-  "app_id": "",
+  "app_id": "d05202c1",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

@@ -19,6 +19,9 @@ getAuthenticatedUser(){
   return this.auth.authState;
 }
 
+signOut(){
+  this.auth.auth.signOut();
+}
   async signInWithEmailAndPassword(account: Account){
   try {
     return <LoginResponse>{
