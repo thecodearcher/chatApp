@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ChatProvider } from '../../providers/chat/chat.service';
 import { Channel } from '../../models/channel/channel.interface';
+import { FirebaseListObservable } from 'firebase/database';
 import { Observable } from 'rxjs/Observable';
 
 /**
@@ -18,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ChannelPage {
 
-  channelList: Observable<Channel[]>;
+  channelList: FirebaseListObservable<Channel[]>;
   constructor(private chat: ChatProvider, private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -50,9 +51,11 @@ this.alertCtrl.create({
 
   getChannels(){
     this.channelList = this.chat.getChannelList();
+    console.log(this.chat.getChannelList());
      }
 
-     selectChannel(channelName: Channel){
+     selectChannel(channelName){
+       console.log(channelName);
        this.navCtrl.push('ChannelChatPage', {channelName});
      }
 }

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FirebaseListObservable } from 'firebase/database';
 import { Channel } from '../../models/channel/channel.interface';
-
+import { ChatProvider } from '../../providers/chat/chat.service';
+import { ChannelMessage } from '../../models/channel/channel-message.interface';
+import { Observable } from 'rxjs/Observable';
 /**
  * Generated class for the ChannelChatPage page.
  *
@@ -17,12 +20,27 @@ import { Channel } from '../../models/channel/channel.interface';
 export class ChannelChatPage {
 
   selectedChannel: Channel;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  channelMessages: Observable<ChannelMessage[]>; 
+  
+  constructor(private chat: ChatProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewWillLoad() {
     this.selectedChannel = this.navParams.get('channelName');
-    console.log('ionViewDidLoad ChannelChatPage');
+    
+    this.channelMessages = this.chat.getChannelChat(this.selectedChannel.$key);
+    console.log(this.selectedChannel);
+    console.log(this.selectedChannel.$key);
   }
+
+  sendMessage(message: string){
+    let channelMessage: ChannelMessage={
+    content: message,
+}
+
+console.log(this.selectedChannel);
+this.chat.sendChannelChatMessage(this.selectedChannel.$key,channelMessage);
+
+}
 
 }
