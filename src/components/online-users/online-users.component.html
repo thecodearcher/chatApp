@@ -1,0 +1,10 @@
+<ion-list>
+<ion-item-divider>Online Users</ion-item-divider>
+  <ion-item  *ngFor="let users of onlineUsers" (click)="openChat(users)">
+    <ion-avatar item-left>
+<img [src]="" alt="">
+    </ion-avatar>
+     <h2>{{users.firstName}} {{users.lastName}}</h2>
+    <!-- <p>{{message.lastMessage}}</p> -->
+   </ion-item>
+</ion-list>

@@ -14,11 +14,12 @@
 
 
 <ion-content padding>
-<app-chat-message *ngFor="let chat of messageList; let i = index" [chatMessage]="chat" [chatIndex]="i"></app-chat-message>
+<app-chat-message *ngFor="let chat of messageList" [chatMessage]="chat" [userId]="userId">
+</app-chat-message>
 
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-  <app-send-message-box></app-send-message-box>
+  <app-send-message-box (sendMessage)="sendMessage($event)"></app-send-message-box>
   </ion-toolbar>
 </ion-footer>

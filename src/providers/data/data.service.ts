@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { FirebaseObjectObservable,FirebaseListObservable} from 'firebase/database';
-import { User} from 'firebase/app';
+import { User, database} from 'firebase/app';
 import {Profile} from '../../models/profile/profile.interface';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import { AuthProvider } from '../auth/auth.service';
+import { Observable } from 'rxjs/Observable';
 /*
   Generated class for the DataProvider provider.
 
@@ -58,5 +59,37 @@ try {
   }
 }
 
+setOnlineUser(profile: Profile, key:string){
+  const ref= database().ref(`online-users/${key}`);
+  try{
+    ref.update({...profile});
+    ref.onDisconnect().remove();
 
+  }catch(e){
+    console.log(e);
+  }
 }
+
+getOnlineUsers(): FirebaseListObservable<Profile[]>{
+   var userList: [Profile] = [{
+     $key:'',
+     avatar:'',
+     dateOfBirth:new Date,
+     email:'',
+     firstName:'',
+     lastName:''
+   }];
+ this.db.list('online-users').stateChanges()
+  .forEach(data=>{
+          const key = data.key;
+          const val = data.payload.val();
+        userList.push({$key:key,...val});
+        });
+
+        userList.shift();
+        console.log(userList);
+        return userList;
+  }
+}
+
+

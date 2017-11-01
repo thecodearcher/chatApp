@@ -21,7 +21,7 @@
 <ion-content padding>
 <ion-list>
   <ion-item *ngFor="let channel of channelList"  (click)="selectChannel(channel)">
-    #{{channel.name}}
+    #{{channel.name}} {{channel.$key}}
   </ion-item>
 </ion-list>
 </ion-content>

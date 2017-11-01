@@ -12,14 +12,15 @@ import { Message } from '../../models/message/message.interface';
   templateUrl: 'chat-message.component.html'
 })
 export class ChatMessageComponent {
-@Input() chatMessage: Message[];
-@Input() chatIndex:number;
-  text: string;
+  @Input() chatMessage:  Message;
+
+
+@Input() userId: string;
 
   constructor() {
     console.log('Hello ChatMessageComponent Component');
-    this.text = 'Hello World';
     console.log(this.chatMessage);
+    console.log(this.userId);
   }
 
 }

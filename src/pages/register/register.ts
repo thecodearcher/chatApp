@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage,ToastController } from 'ionic-angular';
+import { IonicPage,ToastController, NavController } from 'ionic-angular';
 import {LoginResponse} from '../../models/login/login-response.interface';
 /**
  * Generated class for the RegisterPage page.
@@ -15,7 +15,7 @@ import {LoginResponse} from '../../models/login/login-response.interface';
 })
 export class RegisterPage {
 
-  constructor(private toast: ToastController) {
+  constructor(private toast: ToastController,private navCtrl: NavController ) {
   }
 
 
@@ -25,7 +25,7 @@ export class RegisterPage {
 
   register(event: LoginResponse){
     if(!event.error){
-      this.toast.create({
+            this.toast.create({
         message: `Account Created: ${event.result.email}`,
         duration: 3000
       }).present();

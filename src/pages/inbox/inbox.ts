@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {MESSAGE_LIST} from '../../mocks/messages/messages.mock';
 import {Message} from '../../models/message/message.interface';
+
+
 /**
  * Generated class for the InboxPage page.
  *
